@@ -100,12 +100,17 @@ Within the addNumbers function, invoke the callback function as many times as ne
 Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
-const addValues = (arr, value) => {
+const addValues = (array, value) => {
   // Solution code here...
+  array.push(value);
 };
 
-const addNumbers = (num, arr, times, callback) => {
+const addNumbers = (num, array, times, callback) => {
   // Solution code here...
+  for(let i = 0; i < times; i++){
+    callback(array, num);
+  }
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
