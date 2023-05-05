@@ -13,6 +13,7 @@ You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
   // Solution code here...
+  return people.map(person => `${person.firstName} ${person.lastName}`);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Write a function named addValues that, given an array of numbers as input, uses 
 
 const addValues = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, cur) => acc + cur, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -40,6 +42,9 @@ Write a function named addPurchases that, given an array of objects as input, us
 
 const addPurchases = (arr) => {
   // Solution code here...
+  return arr.reduce((total, purchase) => {
+    return total + purchase.purchasePrice;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,6 +57,7 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
+  return arr.reduce((count) => count + 1, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,6 +118,10 @@ let starWarsData = [{
 
 const returnNames = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, curr) => {
+    acc.push(curr.name);
+    return acc;
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -124,6 +134,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
+  return str.split('').reduce((acc, curr) => curr + acc, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -177,6 +188,14 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
+
+  return arr.reduce((total, character) => {
+    if (character.children) {
+      return total + character.children.length;
+    } else {
+      return total;
+    }
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -189,6 +208,11 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  const { count, sum } = arr.reduce((acc, curr) => {
+    return { count: acc.count + 1, sum: acc.sum + curr };
+  }, { count: 0, sum: 0 });
+
+  return sum / count;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -322,13 +346,13 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return the average of the numbers in the array', () => {
     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
   });
