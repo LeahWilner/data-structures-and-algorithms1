@@ -8,11 +8,12 @@ Write a function called addTwo that takes in an array and adds two to every valu
 
 const addTwo = (arr) => {
   // Solution code here...
-  let newArray = [];
-  for(let i = 0; i < times; i++){
-    addTwo(arr,).toStrictEqual;
+  const newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(arr[i] + 2);
   }
-return array
+  return newArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -25,9 +26,7 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 
 const typeNum = (arr) => {
   // Solution code here...
-  let nums = numbers.filter(typeNum) {
-    return | (n % 2);
-  }
+  return arr.filter(num => typeof num === 'number');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -40,9 +39,7 @@ For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 
 const containsAnd = (arr) => {
   // Solution code here...
- let returnTrue = and.filter('and') => {
-  return true;
- }
+  return arr.filter(str => str.includes('and'));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,11 +52,7 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
-  if(index % 2){
-    return false;
-} else {
-  return true;
-}
+  return arr.filter(num => num % 2 !== 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -72,6 +65,13 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+  if (forbiddenValues.length === 0) {
+    return arr;
+  }
+  if (arr.length === 0) {
+    return [];
+  }
+  return arr.filter(num => !forbiddenValues.includes(num));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -115,6 +115,7 @@ const snorlaxData = {
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
   // Solution code here...
+  return arr.filter((minBaseStat) => arr.minBaseStat > minBaseStat);
 };
 
 /* ------------------------------------------------------------------------------------------------
