@@ -30,6 +30,8 @@ Write a function named addOne that, given an array of numbers, uses map to retur
 
 const addOne = (arr) => {
   // Solution code here...
+  return arr.map(x=>x + 1);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -40,7 +42,7 @@ Write a function named addQuestion that, given an array of strings, uses map to 
 
 const addQuestion = (arr) => {
   // Solution code here...
-
+  return arr.map(str => str + '?');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +57,12 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
-
+  const newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    arr.push(Math.pow(2, arr[i]));
+  }
+  return newArray;
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -64,6 +71,11 @@ Write a function named forEachTwoToThe that produces the same output as your for
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
+  let newArray = [];
+  arr.forEach(num => {
+    arr.push(Math.pow(2, num));
+  });
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -74,6 +86,10 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 
 const mapTwoToThe = (arr) => {
   // Solution code here...
+  return arr.map(num => {
+    return Math.pow(2, num);
+  });
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -208,25 +224,25 @@ Run your tests from the console: jest challenges-07.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return a new array of numbers raised to the thrid power', () => {
     expect(raisedToTheThird([2, 4, 5, -7, 0])).toStrictEqual([8, 64, 125, -343, 0]);
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should add one to all the numbers in the array', () => {
     expect(addOne([2, 3, 5, 11])).toStrictEqual([3, 4, 6, 12]);
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should add a question mark to the end of each string', () => {
     expect(addQuestion(['hello', '301', 'students'])).toStrictEqual(['hello?', '301?', 'students?']);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forLoopTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forLoopTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -237,7 +253,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -248,7 +264,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
