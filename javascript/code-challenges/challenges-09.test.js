@@ -10,6 +10,9 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
+  return arr.reduce(function(max, curr) {
+    return curr > max ? curr : max;
+  }, arr[0]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,6 +29,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 
 const getCourseKeys = (obj) => {
   // Solution code here...
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,6 +42,9 @@ Write a function named checkValues that takes in an object and a value and retur
 
 const checkValues = (obj, value) => {
   // Solution code here...
+  const values = Object.values(obj);
+
+  return values.includes(value);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,6 +68,13 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 const updateNumbers = (obj) => {
   // Solution code here...
+  const result = [];
+  for (let key in obj) {
+    const value = obj[key];
+    result.push(`${key}: ${value}`);
+  }
+  return result;
+
 };
 
 
@@ -117,7 +131,11 @@ const characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
-  return houses;
+
+
+  houses.push(arr.map(any => any.house));
+
+  return houses[0];
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -134,7 +152,19 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
+  // const values = Object.values(arr);
+  // for (let i = 0; i < values.length; i++) {
+  //   if (values[i].name === character && values[i].children.length > 0) {
+  //     return true;
+  //   }
+  //   else (const target = arr.find(obj => obj.name === character);
+  //     return target && target.children.length > 0;)
+  // }
+  // return false;
 
+  const characterData = arr.find(item => item.name === character);
+  if (!characterData) return false;
+  return Object.values(characterData).some(value => Array.isArray(value) && value.length > 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
